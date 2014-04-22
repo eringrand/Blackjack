@@ -57,7 +57,7 @@ def total(hand):
         # this will switch the ace from 11 to 1
         tot = tot - 10
         aces -= 1
-    return t
+    return tot
 
 def testblackjack(hand):
     if len(hand) == 2:
