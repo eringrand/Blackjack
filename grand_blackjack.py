@@ -53,7 +53,7 @@ def total(hand):
     # the ace can be 11 or 1
     # figure out which one it should be based on sum of hand
     tot = sum(hand)
-    while aces > 0 and ott > 21:
+    while aces > 0 and tot > 21:
         # this will switch the ace from 11 to 1
         tot = tot - 10
         aces -= 1
@@ -142,7 +142,7 @@ while True:
         pcards.append(deck[cardnum+2])
         dcards.append(deck[cardnum+3])
         cardnum=cardnum+4
-        print "The dealer shows card %d." % (dcards[0])
+        print "The dealer shows a %d." % (dcards[0])
         # player goes first
         while True:
             totp = total(pcards)
