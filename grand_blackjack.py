@@ -52,10 +52,10 @@ def total(hand):
     aces = hand.count(11)
     # the ace can be 11 or 1
     # figure out which one it should be based on sum of hand
-    t = sum(hand)
-    while aces > 0 and t > 21:
+    tot = sum(hand)
+    while aces > 0 and ott > 21:
         # this will switch the ace from 11 to 1
-        t = t - 10
+        tot = tot - 10
         aces -= 1
     return t
 
