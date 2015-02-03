@@ -22,7 +22,7 @@ def shufflecards():
     # a suit of cards in blackjack assumes the values 2 - 10,
     # with face cards as 10 and ace as 11 for start
     # 4 suits in deck, so sequence repeats
-    cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
+    cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
     deck = cards # 1 suit
     deck.extend(deck) # 2 suits
     deck.extend(deck) # 4 suits
@@ -47,17 +47,27 @@ def getbet(chips):
             print "Oops! Bet must be an integer greater or equal to 1."
     return bet
 
+
+def inthand(hand):
+	hand = [card.replace('A', '11') for card in hand]
+	hand = [card.replace('Q', '10') for card in hand]
+	hand = [card.replace('J', '10') for card in hand]
+	hand = [card.replace('K', '10') for card in hand]
+	hand = [int(card) for card in hand]
+	return hand
+
 def total(hand):
-    # need to know many aces are in the hand
-    aces = hand.count(11)
+# need to know many aces are in the hand
+	aces = hand.count('A')
+	hand = inthand(hand) # change face value cards to integer values
     # the ace can be 11 or 1
     # figure out which one it should be based on sum of hand
-    tot = sum(hand)
-    while aces > 0 and tot > 21:
-        # this will switch the ace from 11 to 1
-        tot = tot - 10
-        aces -= 1
-    return tot
+	tot = sum(hand)
+	while aces > 0 and tot > 21:
+    	# this will switch the ace from 11 to 1
+		tot = tot - 10
+		aces -= 1
+	return tot
 
 def testblackjack(hand):
     if len(hand) == 2:
@@ -68,7 +78,7 @@ def printtotal(hand):
     # checks the number of aces and lets you know if you have +/- 10 avilable in the hand
     aces = hand.count(11)
     tot = total(hand) # total of hand
-    tot_a = sum(hand) # total of hand with all aces as 11
+    tot_a = sum(inthand(hand)) # total of hand with all aces as 11
     while aces > 0 and tot_a > tot:
         tot_a = tot_a - 10
         aces -= 1
@@ -142,7 +152,7 @@ while True:
         pcards.append(deck[cardnum+2])
         dcards.append(deck[cardnum+3])
         cardnum=cardnum+4
-        print "The dealer shows a %d." % (dcards[0])
+        print "The dealer shows a %s." % (dcards[0])
         # player goes first
         while True:
             totp = total(pcards)
