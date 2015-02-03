@@ -19,7 +19,7 @@ import random
 
 def shufflecards():
     # pick a card from the deck
-    # a suit of cards in blackjack assumes the values 2- 10,
+    # a suit of cards in blackjack assumes the values 2 - 10,
     # with face cards as 10 and ace as 11 for start
     # 4 suits in deck, so sequence repeats
     cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
