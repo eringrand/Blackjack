@@ -1,20 +1,27 @@
 #!/usr/bin/env python
 
-# command line blackjack game
-# uses 1 deck with 4 suits which reshuffle when ~5 cards are left
-# you start with two cards and add them up, if you have 21, then you have a blackjack
-# dealer is the computer
-# player plays first, then dealer goes
-# the better score not exceeding 21 wins
-# if the dealer and player are equal, then the hand is a tie
-# any score over 21 is a bust
-# player starts off with 100 chips to bet
-# can bet any amount they want at start, but must best at least 1
-# if player looses: the bet is taken by the dealer
-# if player wins: the player wins the amount of the orginal bet
-# if player wins by with a natural blackjack: the player wins 1.5x the orginal bet
-# if game ends with tie: player doesn't loose or win any chips
+'''
+TO DO:
+- should try and implement class atributes for the suits of the cards
+- keep win/loss stats
+'''
 
+'''
+command line blackjack game
+uses 1 deck with 4 suits which reshuffle when ~5 cards are left
+you start with two cards and add them up, if you have 21, then you have a blackjack
+dealer is the computer
+player plays first, then dealer goes
+the better score not exceeding 21 wins
+if the dealer and player are equal, then the hand is a tie
+any score over 21 is a bust
+player starts off with 100 chips to bet
+can bet any amount they want at start, but must best at least 1
+if player looses: the bet is taken by the dealer
+if player wins: the player wins the amount of the orginal bet
+if player wins by with a natural blackjack: the player wins 1.5x the orginal bet
+if game ends with tie: player doesn't loose or win any chips
+'''
 import random
 
 def shufflecards():
