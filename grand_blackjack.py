@@ -87,9 +87,9 @@ def testblackjack(hand):
     
 def printtotal(hand):
     # checks the number of aces and lets you know if you have +/- 10 avilable in the hand
-    aces = hand.count(11)
     tot = total(hand) # total of hand
     tot_a = sum(inthand(hand)) # total of hand with all aces as 11
+    aces = hand.count('A')
     while aces > 0 and tot_a > tot:
         tot_a = tot_a - 10
         aces -= 1
