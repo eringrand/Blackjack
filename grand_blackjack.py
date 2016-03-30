@@ -16,7 +16,7 @@ the better score not exceeding 21 wins
 if the dealer and player are equal, then the hand is a tie
 any score over 21 is a bust
 player starts off with 100 chips to bet
-can bet any amount they want at start, but must best at least 1
+can bet any amount they want at start, but must bet at least 1
 if player looses: the bet is taken by the dealer
 if player wins: the player wins the amount of the orginal bet
 if player wins by with a natural blackjack: the player wins 1.5x the orginal bet
