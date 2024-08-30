@@ -3,11 +3,6 @@ library(tidyverse)
 library(glue)
 library(retry)
 
-
-# TO DO:
-# - keep win/loss stats
-
-
 # command line blackjack game
 # uses 1 deck with 4 suits which reshuffle when ~5 cards are left
 # you start with two cards and add them up, if you have 21, then you have a blackjack
