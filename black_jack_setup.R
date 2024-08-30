@@ -171,6 +171,9 @@ blackjack <- function() {
   pchips <- 100 # player starting amount of chips 
   deck <- shufflecards() # shuffle the deck at the start of every new game
   cardnum <- 1 # initialize start of deck
+  wins <- 0 # total player wins
+  games <- 0 # total number of hands played
+  
   
   while(TRUE){
     # begins every new hand
@@ -218,7 +221,7 @@ blackjack <- function() {
       
       else if(totp < 21) {
         # get hit or stand input
-        hs <- retry(try_hit_or_stand(), when = "error")
+        hs <- retry(hit_or_stand(), when = "error")
         
         if(hs == "h") {
           pcards <- c(pcards, deck[cardnum + 1])
@@ -237,10 +240,10 @@ blackjack <- function() {
     
     
     # dealer's turn
+    totd <- total_hand(dcards) 
     if(! pbust) { # dealer only goes if player didn't bust 
       while(TRUE) {
         totd <- total_hand(dcards) 
-        
         while(totd <= 16) { # dealer hits until his hand value is 17 or greater
           dcards <- c(dcards, deck[cardnum + 1])
           totd <- total_hand(dcards)
@@ -269,6 +272,9 @@ blackjack <- function() {
     #     
     # Who won?
     result <- who_won(dbust, pbust, totp, totd)
+    wins <- if_else(result == 1, wins + 1, wins)
+    games <- games + 1
+    
     
     # Award the bet
     if(result == 1 && test_blackjack(pcards) ) {
@@ -291,9 +297,11 @@ blackjack <- function() {
     
     
     if(exit == "q") {
+      print(glue("Player won {wins} games out of {games} for a win rate of {round(100 * (wins/games), 2)}%."))
+      
       earned <- pchips - 100
       
-      if(totbet > 0) {
+      if(earned > 0) {
         print(glue("Player ended with {pchips} chips. That's {earned} more than player began with! Congrats! Thanks for playing!"))
       } else{
         print(glue("Player ended with {pchips} chips. Thanks for playing!"))
